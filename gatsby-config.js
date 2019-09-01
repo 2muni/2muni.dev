@@ -154,6 +154,7 @@ module.exports = {
              }
            }
       `,
+            title: "2muni.dev's RSS Feed",
             output: '/rss.xml',
           },
         ],
