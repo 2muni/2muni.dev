@@ -17,13 +17,13 @@ const Home = styled(Link)`
   font-size: 1.5rem;
 `
 
-const Header = ({ dark, toggleTheme }) => {
+const Header = ({ theme, toggleTheme }) => {
   return (
     <Wrapper>
       <Content>
         <Home to="/">{config.siteTitle}</Home>
         <Switch
-          defaultChecked={dark}
+          checked={theme === 'dark'}
           icons={{
             checked: <span>🌙</span>,
             unchecked: <span>☀</span>,

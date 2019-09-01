@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import Helmet from 'react-helmet'
 import favicon from '../../images/favicon.ico'
@@ -16,17 +16,20 @@ const Container = styled.div`
   }
 `
 const Template = ({ children }) => {
-  const localTheme = localStorage.getItem('theme') || 'light'
-  const [dark, setDark] = useState(localTheme === 'dark')
+  const [theme, setTheme] = useState('light')
   const toggleTheme = () => {
-    if (!dark) {
-      setDark(true)
+    if (theme === 'light') {
+      setTheme('dark')
       localStorage.setItem('theme', 'dark')
     } else {
-      setDark(false)
+      setTheme('light')
       localStorage.setItem('theme', 'light')
     }
   }
+  useEffect(() => {
+    const localTheme = localStorage.getItem('theme') || 'light'
+    setTheme(localTheme)
+  }, [])
   return (
     <div className="siteRoot">
       <Helmet>
@@ -35,15 +38,14 @@ const Template = ({ children }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href={favicon} />
       </Helmet>
-
-      <ThemeProvider theme={!dark ? lightTheme : darkTheme}>
+      <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
         <Container>
-          <Header dark={dark} toggleTheme={toggleTheme} />
+          <Header theme={theme} toggleTheme={toggleTheme} />
           <div className="siteContent">{children}</div>
           <Footer />
         </Container>
       </ThemeProvider>
-      <GlobalStyle theme={!dark ? lightTheme : darkTheme} />
+      <GlobalStyle theme={theme === 'light' ? lightTheme : darkTheme} />
     </div>
   )
 }
