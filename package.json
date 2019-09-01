@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-gcn",
-  "description": "A starter template to build amazing static websites with Gatsby, Contentful and Netlify",
-  "version": "2.0.6",
-  "repository": "https://github.com/ryanwiemer/gatsby-starter-gcn",
-  "author": "Ryan Wiemer <ryan@ryanwiemer.com>",
+  "name": "2muni.dev",
+  "description": "Life & Development Log with Gatsby, Contentful and Netlify",
+  "version": "1.0.0",
+  "repository": "https://github.com/2muni/2muni.dev",
+  "author": "2muni <2munig@gmail.com>",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.1",
     "chalk": "^2.4.2",
@@ -36,6 +36,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
+    "react-toggle": "^4.0.2",
     "styled-components": "^4.3.1"
   },
   "keywords": [

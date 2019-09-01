@@ -5,6 +5,8 @@ const GlobalStyle = createGlobalStyle`
    v2.0 | 20110126
    License: none (public domain)
   */
+  @import url('https://fonts.googleapis.com/css?family=Noto+Sans|Noto+Sans+JP|Noto+Sans+KR&display=swap');
+
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,
@@ -32,7 +34,6 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
   }
   .siteRoot {
-    height: 100vh;
     display: flex;
     flex-direction: column;
   }
@@ -40,6 +41,7 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     flex-direction: column;
     flex: 1 0 auto;
+    flex-grow: 1;
   }
   footer {
     width: 100%;
@@ -83,14 +85,16 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background: white;
+    background: ${props => props.theme.colors.background};
+    color: ${props => props.theme.colors.textColor};
+    transition: color 0.25s ease-out, background 0.25s ease-out;
     line-height: 1;
     font-size: 100%;
     font-variant-ligatures: none;
     text-rendering: optimizeLegibility;
-    text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
+    text-shadow: rgba(0, 0, 0, .3) 0 0 1px;
     font-weight: 400;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: 'Noto Sans', 'Noto Sans KR', 'Noto Sans JP', sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   }
 
   img {

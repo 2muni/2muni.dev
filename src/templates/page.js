@@ -2,11 +2,11 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import config from '../utils/siteConfig'
-import Layout from '../components/Layout'
-import Container from '../components/Container'
-import PageTitle from '../components/PageTitle'
-import PageBody from '../components/PageBody'
-import SEO from '../components/SEO'
+import Layout from './commons/Layout'
+import SEO from './commons/SEO'
+import Container from '../components/atoms/Container'
+import Emphasis from '../components/atoms/Emphasis'
+import PageBody from '../components/atoms/PageBody'
 
 const PageTemplate = ({ data }) => {
   const { title, slug, body } = data.contentfulPage
@@ -18,9 +18,8 @@ const PageTemplate = ({ data }) => {
         <title>{`${title} - ${config.siteTitle}`}</title>
       </Helmet>
       <SEO pagePath={slug} postNode={postNode} pageSEO />
-
       <Container>
-        <PageTitle>{title}</PageTitle>
+        <Emphasis>{title}</Emphasis>
         <PageBody body={body} />
       </Container>
     </Layout>

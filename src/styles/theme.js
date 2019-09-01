@@ -16,4 +16,28 @@ const theme = {
   },
 }
 
-export default theme
+export const darkTheme = {
+  ...theme,
+  colors: {
+    base: '#2e3440',
+    secondary: '#3b4252',
+    tertiary: '#2E3440',
+    highlight: '#d08770',
+    textColor: '#d8d7d7',
+    captionColor: '#8b8888',
+    background: '#242933',
+  },
+}
+
+export const lightTheme = {
+  ...theme,
+  colors: {
+    base: '#eceff4',
+    secondary: '#e5e9f0',
+    tertiary: '#d8dee9',
+    highlight: '#338ccd',
+    textColor: '#242933',
+    captionColor: '#6f7d99',
+    background: '#ffffff',
+  },
+}

@@ -2,9 +2,9 @@ import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 import Helmet from 'react-helmet'
-import PageTitle from '../components/PageTitle'
-import Container from '../components/Container'
-import Layout from '../components/Layout'
+import Layout from '../templates/commons/Layout'
+import Emphasis from '../components/atoms/Emphasis'
+import Container from '../components/atoms/Container'
 
 const Text = styled.p`
   text-align: center;
@@ -22,7 +22,7 @@ const NotFoundPage = () => (
     </Helmet>
 
     <Container>
-      <PageTitle>Page Not Found</PageTitle>
+      <Emphasis>Page Not Found</Emphasis>
       <Text>
         Please return <Link to="/">home</Link> or use the menu to navigate to a
         different page.

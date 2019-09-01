@@ -20,6 +20,7 @@ try {
 module.exports = {
   siteMetadata: {
     siteUrl: config.siteUrl,
+    title: config.siteTitle,
     rssMetadata: {
       site_url: config.siteUrl,
       feed_url: `${config.siteUrl}/rss.xml`,
@@ -94,13 +95,15 @@ module.exports = {
         setup(ref) {
           const ret = ref.query.site.siteMetadata.rssMetadata
           ret.allMarkdownRemark = ref.query.allMarkdownRemark
-          ret.generator = 'GatsbyJS GCN Starter'
+          ret.generator = '2muni'
           return ret
         },
         query: `
     {
       site {
         siteMetadata {
+          siteUrl
+          title
           rssMetadata {
             site_url
             feed_url

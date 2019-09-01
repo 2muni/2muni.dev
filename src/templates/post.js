@@ -2,14 +2,14 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import config from '../utils/siteConfig'
-import Layout from '../components/Layout'
-import Hero from '../components/Hero'
-import Container from '../components/Container'
-import PageBody from '../components/PageBody'
-import TagList from '../components/TagList'
-import PostLinks from '../components/PostLinks'
-import PostDetails from '../components/PostDetails'
-import SEO from '../components/SEO'
+import Layout from './commons/Layout'
+import SEO from './commons/SEO'
+import Hero from '../components/atoms/Hero'
+import Container from '../components/atoms/Container'
+import PageBody from '../components/atoms/PageBody'
+import PostTags from '../components/molecules/PostTags'
+import PostLinks from '../components/molecules/PostLinks'
+import PostDetails from '../components/molecules/PostDetails'
 
 const PostTemplate = ({ data, pageContext }) => {
   const {
@@ -21,7 +21,6 @@ const PostTemplate = ({ data, pageContext }) => {
     tags,
   } = data.contentfulPost
   const postNode = data.contentfulPost
-
   const previous = pageContext.prev
   const next = pageContext.next
 
@@ -31,18 +30,13 @@ const PostTemplate = ({ data, pageContext }) => {
         <title>{`${title} - ${config.siteTitle}`}</title>
       </Helmet>
       <SEO pagePath={slug} postNode={postNode} postSEO />
-
-      <Hero title={title} image={heroImage} height={'50vh'} />
-
       <Container>
-        {tags && <TagList tags={tags} />}
-        <PostDetails
-          date={publishDate}
-          timeToRead={body.childMarkdownRemark.timeToRead}
-        />
+        <Hero fluid={heroImage.fluid} backgroundColor={'#eeeeee'} />
+        <PostDetails title={title} date={publishDate} />
+        {tags && <PostTags tags={tags} />}
         <PageBody body={body} />
+        <PostLinks previous={previous} next={next} />
       </Container>
-      <PostLinks previous={previous} next={next} />
     </Layout>
   )
 }
@@ -77,7 +71,6 @@ export const query = graphql`
       }
       body {
         childMarkdownRemark {
-          timeToRead
           html
           excerpt(pruneLength: 320)
         }
