@@ -9,76 +9,46 @@ import CardList from '../components/organisms/CardList'
 import Bio from '../components/organisms/Bio'
 import Nav from '../components/organisms/Nav'
 import config from '../utils/siteConfig'
+import InfiniteScroll from '../utils/InfiniteScroll'
 
 const Index = ({ location, data, pageContext }) => {
-  // const DEST_POS = 394
-  const BASE_LINE = 80
-  const PostPer = 7
-  const [index, setIndex] = useState(1)
-  const [tag, setTag] = useState(
-    (location.state && location.state.title) || 'All'
-  )
-  const [loadMore, setLoadMore] = useState(false)
-
-  const tags = data.allContentfulTag.edges.map(({ node }) => {
-    return {
-      ...node,
-      post: orderBy(
-        node.post,
-        // eslint-disable-next-line
-        [object => new moment(object.publishDateISO)],
-        ['desc']
-      ),
-    }
-  })
-
-  const allPosts = [
+  const ALL_CONTENT = [
     {
       id: 'all',
       title: 'All',
       post: data.allContentfulPost.edges.map(({ node }) => node),
     },
-    ...tags,
+    ...data.allContentfulTag.edges.map(({ node }) => {
+      return {
+        ...node,
+        post: orderBy(
+          node.post,
+          // eslint-disable-next-line
+          [object => new moment(object.publishDateISO)],
+          ['desc']
+        ),
+      }
+    }),
   ]
-  const posts = allPosts
-    .filter(({ title }) => title === tag)[0]
-    .post.slice(0, index * PostPer)
+  // const DEST_POS = 394
+  const POST_PER = 7
 
-  const onScroll = () => {
-    const scrollHeight = Math.max(
-      document.documentElement.scrollHeight,
-      document.body.scrollHeight
-    )
-    const scrollTop = Math.max(
-      document.documentElement.scrollTop,
-      document.body.scrollTop
-    )
-    const clientHeight = document.documentElement.clientHeight
-    if (scrollHeight - (scrollTop + clientHeight) < BASE_LINE) {
-      return setLoadMore(true)
-    }
-    return setLoadMore(false)
-  }
-
-  const handleTag = param => {
-    setTag(param)
-    setIndex(1)
-  }
+  const [tag, setTag] = useState(
+    (location.state && location.state.title) || 'All'
+  )
+  const taggedPosts = ALL_CONTENT.filter(({ title }) => title === tag)[0].post
+  const [page, setPage, LoadState] = InfiniteScroll(taggedPosts, POST_PER)
 
   useEffect(() => {
-    window.addEventListener('scroll', onScroll, { passive: false })
-    return () => {
-      window.removeEventListener(`scroll`, onScroll, { passive: false })
+    if (LoadState && taggedPosts.length / POST_PER > page) {
+      setPage(page + 1)
     }
-  }, [])
-  useEffect(() => {
-    if (
-      loadMore &&
-      allPosts.filter(({ title }) => title === tag)[0].post.length / PostPer >
-        index
-    )
-      setIndex(index + 1)
-  }, [loadMore])
+  }, [LoadState])
+
+  const handleTag = tag => {
+    setTag(tag)
+    setPage(1)
+  }
 
   return (
     <Layout>
@@ -87,8 +57,8 @@ const Index = ({ location, data, pageContext }) => {
       </Helmet>
       <SEO />
       <Bio />
-      <Nav list={allPosts} current={tag} handleItem={handleTag} />
-      <CardList list={posts} />
+      <Nav list={ALL_CONTENT} current={tag} handleItem={handleTag} />
+      <CardList list={taggedPosts.slice(0, page * POST_PER)} />
     </Layout>
   )
 }
