@@ -11,16 +11,14 @@ const Wrapper = styled.nav`
   margin: 2.625rem auto;
   background: ${props => props.theme.colors.background};
   z-index: 100;
-  &,
-  * {
-    transition: all 0.25s ease-out;
-  }
+  transition: background 0.25s ease-out;
 `
 const Menu = styled(List)`
   margin: 0 auto;
   overflow-x: scroll;
   max-width: ${props => props.theme.sizes.maxWidth};
   box-shadow: inset 0 -1px 0 ${props => props.theme.colors.secondary};
+  transition: box-shadow 0.25s ease-out;
   &::-webkit-scrollbar {
     display: none;
   }

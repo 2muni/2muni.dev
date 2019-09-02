@@ -6,30 +6,35 @@ import Badge from '../../atoms/Badge'
 const Wrapper = styled.li`
   display: flex;
   align-items: center;
-  padding: 1.125rem 0.5rem;
+  padding: 0.625rem 0.5rem;
   cursor: pointer;
   border-bottom: 3px solid
     ${props => (props.actived ? props.theme.colors.highlight : 'transparent')};
+  color: ${props =>
+    props.actived
+      ? props.theme.colors.textColor
+      : props.theme.colors.captionColor};
+  * {
+    transition: color 0.25s ease-out, background 0.25s ease-out;
+  }
   &:hover {
     color: ${props => props.theme.colors.textColor};
-  }
-  > * {
-    color: ${props =>
-      props.actived
-        ? props.theme.colors.textColor
-        : props.theme.colors.captionColor};
   }
 `
 const Title = styled(Caption)`
   font-size: 1em;
   margin-right: 0.625em;
 `
+const Count = styled(Badge)`
+  font-size: 0.8em;
+  padding: 0.3em 0.312em 0.4em;
+`
 
 const NavItem = ({ actived, title, count, ...other }) => {
   return (
     <Wrapper actived={actived} {...other}>
       <Title>{title}</Title>
-      <Badge>{count}</Badge>
+      <Count>{count}</Count>
     </Wrapper>
   )
 }

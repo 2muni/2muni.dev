@@ -1,38 +1,27 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'gatsby'
+import Link from '../../atoms/Link'
+import List from '../../atoms/List'
+import Badge from '../../atoms/Badge'
+import Container from '../../atoms/Container'
 
-const List = styled.ul`
-  width: 100%;
-  margin: 1em auto;
-  max-width: ${props => props.theme.sizes.maxWidthCentered};
-`
-
-const Tag = styled.li`
-  display: inline-block;
-  margin: 0 0.25em 0.25em 0;
-  a {
-    display: inline-block;
-    font-size: 90%;
-    background: ${props => props.theme.colors.highlight};
-    color: ${props => props.theme.colors.background};
-    padding: 0.5em 1em;
-    border-radius: 6px;
-    text-decoration: none;
-  }
+const Wrapper = styled(Container)`
+  margin: 2.125em auto;
 `
 
 const TagList = props => {
   return (
-    <List>
-      {props.tags.map(({ id, title }) => (
-        <Tag key={id}>
-          <Link to={`/`} state={{ title }}>
-            {title}
-          </Link>
-        </Tag>
-      ))}
-    </List>
+    <Wrapper centered>
+      <List>
+        {props.tags.map(({ id, title }) => (
+          <li key={id}>
+            <Link to={`/`} state={{ title }}>
+              <Badge emph>{title}</Badge>
+            </Link>
+          </li>
+        ))}
+      </List>
+    </Wrapper>
   )
 }
 

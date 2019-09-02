@@ -9,6 +9,9 @@ import Footer from '../../components/organisms/Footer'
 import config from '../../utils/siteConfig'
 
 const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   height: 100%;
   padding: 2.625rem 1.3125rem;
   > *:not(:last-child) {

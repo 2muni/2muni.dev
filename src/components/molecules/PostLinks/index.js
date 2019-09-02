@@ -7,16 +7,15 @@ import Container from '../../atoms/Container'
 const Wrapper = styled(Container)`
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
   margin: 0 auto;
-  padding: 0 1.5em 2em;
 `
 const PreviousLink = styled(Link)`
-  margin-right: auto;
-  order: 1;
+  margin: 0.5em auto 0.5em 0;
 `
 const NextLink = styled(Link)`
-  margin-left: auto;
-  order: 2;
+  margin: 0.5em 0 0.5em auto;
 `
 
 const PostLinks = ({ previous, next }) => {

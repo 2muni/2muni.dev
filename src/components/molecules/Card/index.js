@@ -1,12 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import Emphasis from '../../atoms/Emphasis'
 import Caption from '../../atoms/Caption'
+import Link from '../../atoms/Link'
 
 const Post = styled.li`
   margin: 0 0 1em 0;
+  transition: box-shadow 0.25s ease-out, background 0.25s ease-out;
   @media screen and (min-width: ${props => props.theme.responsive.small}) {
     flex: ${props => (props.featured ? '0 0 100%' : '0 0 49%')};
     margin: 0 0 2vw 0;
@@ -22,7 +23,6 @@ const Post = styled.li`
     display: flex;
     flex-flow: column;
     color: ${props => props.theme.colors.textColor};
-    text-decoration: none;
     .gatsby-image-wrapper {
       height: 0;
       padding-bottom: 60%;

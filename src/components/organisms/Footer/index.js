@@ -11,6 +11,7 @@ const Wrapper = styled.footer`
   font-size: 90%;
   max-width: ${props => props.theme.sizes.maxWidth};
   box-shadow: inset 0 1px 0 ${props => props.theme.colors.secondary};
+  transition: box-shadow 0.25s ease-out;
 `
 const Text = styled(Caption)`
   display: inline;

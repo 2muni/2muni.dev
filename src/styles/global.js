@@ -40,7 +40,7 @@ const GlobalStyle = createGlobalStyle`
   .siteContent {
     display: flex;
     flex-direction: column;
-    flex: 1 0 auto;
+    flex: 1;
     flex-grow: 1;
   }
   footer {

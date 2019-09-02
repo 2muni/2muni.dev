@@ -1,17 +1,26 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import styled from 'styled-components'
 import Helmet from 'react-helmet'
 import Layout from '../templates/commons/Layout'
 import Emphasis from '../components/atoms/Emphasis'
 import Container from '../components/atoms/Container'
+import Link from '../components/atoms/Link'
+import Badge from '../components/atoms/Badge'
 
-const Text = styled.p`
+const Wrapper = styled(Container)`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
+const Title = styled(Emphasis)`
   text-align: center;
-  line-height: 1.6;
-  a {
-    color: #121212;
-  }
+`
+const Text = styled.p`
+  margin: 3em 0 4em;
+  line-height: 1.6em;
+  text-align: center;
 `
 
 const NotFoundPage = () => (
@@ -21,13 +30,15 @@ const NotFoundPage = () => (
       <meta name="description" content="Page not found" />
     </Helmet>
 
-    <Container>
-      <Emphasis>Page Not Found</Emphasis>
+    <Wrapper centered>
+      <Title>Page Not Found</Title>
       <Text>
-        Please return <Link to="/">home</Link> or use the menu to navigate to a
-        different page.
+        The page you were looking for doesn't seem to exist anymore...
       </Text>
-    </Container>
+      <Link to="/">
+        <Badge emph>Back to 2muni.dev</Badge>
+      </Link>
+    </Wrapper>
   </Layout>
 )
 

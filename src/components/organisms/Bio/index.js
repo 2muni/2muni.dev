@@ -38,11 +38,11 @@ const Bio = () => {
                   GitHub
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link external href="#">
                   Qiita
                 </Link>
-              </li>
+              </li> */}
             </List>
           </Caption>
         </Text>

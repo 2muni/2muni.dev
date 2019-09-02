@@ -4,7 +4,7 @@ const List = styled.ul`
   display: flex;
   li {
     &:not(:first-child) {
-      margin-left: 1em;
+      margin-left: 0.8em;
     }
   }
 `
