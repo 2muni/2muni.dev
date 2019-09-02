@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import Helmet from 'react-helmet'
 import favicon from '../../images/favicon.ico'
@@ -15,8 +15,13 @@ const Container = styled.div`
     margin-bottom: 2.625rem;
   }
 `
+
 const Template = ({ children }) => {
-  const [theme, setTheme] = useState('light')
+  const [theme, setTheme] = useState(
+    typeof localStorage !== 'undefined'
+      ? localStorage.getItem('theme')
+      : 'light'
+  )
   const toggleTheme = () => {
     if (theme === 'light') {
       setTheme('dark')
@@ -26,10 +31,7 @@ const Template = ({ children }) => {
       localStorage.setItem('theme', 'light')
     }
   }
-  useEffect(() => {
-    const localTheme = localStorage.getItem('theme') || 'light'
-    setTheme(localTheme)
-  }, [])
+
   return (
     <div className="siteRoot">
       <Helmet>

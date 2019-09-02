@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-const InfiniteScroll = (list, coef) => {
+export default (list, coef) => {
   const [page, setPage] = useState(1)
   const [LoadState, setLoadState] = useState(false)
 
@@ -35,5 +35,3 @@ const InfiniteScroll = (list, coef) => {
 
   return [page, setPage, LoadState]
 }
-
-export default InfiniteScroll
