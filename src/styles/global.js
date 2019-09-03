@@ -33,16 +33,6 @@ const GlobalStyle = createGlobalStyle`
   html, body {
     height: 100%;
   }
-  .siteRoot {
-    display: flex;
-    flex-direction: column;
-  }
-  .siteContent {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    flex-grow: 1;
-  }
   footer {
     width: 100%;
   }

@@ -8,12 +8,12 @@ import Container from '../../atoms/Container'
 import avatar from '../../../images/avatar.png'
 import config from '../../../utils/siteConfig'
 
-const Wrapper = styled.div`
-  width: 100%;
+const Wrapper = styled(Container)`
   display: flex;
   align-items: center;
 `
 const Text = styled.div`
+  margin-left: 1em;
   flex: 1;
 `
 const Description = styled(Caption)`
@@ -22,32 +22,30 @@ const Description = styled(Caption)`
 
 const Bio = () => {
   return (
-    <Container>
-      <Wrapper>
-        <Avatar src={avatar} />
-        <Text>
-          <Caption>
-            {'Written by '}
-            <Link external href="#">{`@${config.author}`}</Link>
-          </Caption>
-          <Description>{config.authorDescription}</Description>
-          <Caption>
-            <List>
-              <li>
-                <Link external href="https://github.com/2muni">
-                  GitHub
-                </Link>
-              </li>
-              {/* <li>
+    <Wrapper>
+      <Avatar src={avatar} />
+      <Text>
+        <Caption>
+          {'Written by '}
+          <Link external href="#">{`@${config.author}`}</Link>
+        </Caption>
+        <Description>{config.authorDescription}</Description>
+        <Caption>
+          <List>
+            <li>
+              <Link external href="https://github.com/2muni">
+                GitHub
+              </Link>
+            </li>
+            {/* <li>
                 <Link external href="#">
                   Qiita
                 </Link>
               </li> */}
-            </List>
-          </Caption>
-        </Text>
-      </Wrapper>
-    </Container>
+          </List>
+        </Caption>
+      </Text>
+    </Wrapper>
   )
 }
 

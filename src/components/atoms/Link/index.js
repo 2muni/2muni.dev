@@ -5,6 +5,7 @@ import { Link } from 'gatsby'
 const styles = css`
   color: ${props => props.theme.colors.highlight};
   text-decoration: none;
+  transition: color 0.25s ease-out;
 `
 const Internal = styled(Link)`
   ${styles}

@@ -4,12 +4,14 @@ import Helmet from 'react-helmet'
 import config from '../utils/siteConfig'
 import Layout from './commons/Layout'
 import SEO from './commons/SEO'
-import Hero from '../components/atoms/Hero'
+import Utterances from './commons/Utterances'
+import Hero from '../components/molecules/Hero'
 import Container from '../components/atoms/Container'
 import PageBody from '../components/atoms/PageBody'
 import PostTags from '../components/molecules/PostTags'
 import PostLinks from '../components/molecules/PostLinks'
 import PostDetails from '../components/molecules/PostDetails'
+import Bio from '../components/organisms/Bio'
 
 const PostTemplate = ({ data, pageContext }) => {
   const {
@@ -30,12 +32,14 @@ const PostTemplate = ({ data, pageContext }) => {
         <title>{`${title} - ${config.siteTitle}`}</title>
       </Helmet>
       <SEO pagePath={slug} postNode={postNode} postSEO />
-      <Container>
-        <Hero fluid={heroImage.fluid} backgroundColor={'#eeeeee'} />
+      <Hero fluid={heroImage.fluid} backgroundColor={'#eeeeee'} />
+      <Container centered>
         <PostDetails title={title} date={publishDate} />
-        {tags && <PostTags tags={tags} />}
         <PageBody body={body} />
+        {tags && <PostTags tags={tags} />}
+        <Bio />
         <PostLinks previous={previous} next={next} />
+        <Utterances />
       </Container>
     </Layout>
   )

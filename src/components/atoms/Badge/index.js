@@ -8,7 +8,7 @@ const Badge = styled.span`
   color: ${props => (props.emph ? props.theme.colors.background : 'inherit')};
   background: ${props =>
     props.emph ? props.theme.colors.highlight : props.theme.colors.secondary};
-  transition: background 0.25s ease-out;
+  transition: color 0.25s ease-out, background 0.25s ease-out;
   &:hover {
     background: ${props => (props.emph ? props.theme.colors.hlHover : '')};
   }

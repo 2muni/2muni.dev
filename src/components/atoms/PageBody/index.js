@@ -3,9 +3,6 @@ import styled from 'styled-components'
 require('prismjs/themes/prism.css')
 
 const Body = styled.div`
-  margin: 0 auto;
-  max-width: ${props => props.theme.sizes.maxWidthCentered};
-  color: ${props => props.theme.colors.textColor};
   h1,
   h2,
   h3 {

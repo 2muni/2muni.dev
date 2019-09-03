@@ -5,7 +5,7 @@ import Caption from '../../atoms/Caption'
 import Container from '../../atoms/Container'
 
 const Wrapper = styled(Container)`
-  margin: 1em auto;
+  margin: 1.3125em auto;
 `
 const Title = styled(Emphasis)`
   font-size: 2em;

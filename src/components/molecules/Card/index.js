@@ -1,12 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import Img from 'gatsby-image'
+import BgImg from '../../atoms/BgImg'
 import Emphasis from '../../atoms/Emphasis'
 import Caption from '../../atoms/Caption'
 import Link from '../../atoms/Link'
 
 const Post = styled.li`
-  margin: 0 0 1em 0;
   transition: box-shadow 0.25s ease-out, background 0.25s ease-out;
   @media screen and (min-width: ${props => props.theme.responsive.small}) {
     flex: ${props => (props.featured ? '0 0 100%' : '0 0 49%')};
@@ -49,7 +48,7 @@ const Card = ({ slug, heroImage, title, publishDate, body, ...props }) => {
   return (
     <Post featured={props.featured}>
       <Link to={`/${slug}/`}>
-        <Img fluid={heroImage.fluid} />
+        <BgImg fluid={heroImage.fluid} />
         <Title>{title}</Title>
         <Date>{publishDate}</Date>
         <Excerpt

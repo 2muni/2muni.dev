@@ -11,7 +11,7 @@ import Nav from '../components/organisms/Nav'
 import config from '../utils/siteConfig'
 import InfiniteScroll from '../utils/InfiniteScroll'
 
-const Index = ({ location, data, pageContext }) => {
+const Index = ({ location, data }) => {
   const ALL_CONTENT = [
     {
       id: 'all',
