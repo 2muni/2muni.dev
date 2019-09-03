@@ -11,6 +11,7 @@ import config from '../../../utils/siteConfig'
 const Wrapper = styled(Container)`
   display: flex;
   align-items: center;
+  margin: 1.3125rem auto;
 `
 const Text = styled.div`
   margin-left: 1em;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import orderBy from 'lodash/orderBy'
@@ -8,21 +8,29 @@ import SEO from './commons/SEO'
 import CardList from '../components/organisms/CardList'
 import Bio from '../components/organisms/Bio'
 import Nav from '../components/organisms/Nav'
+import { Context } from '../utils/Context'
 import config from '../utils/siteConfig'
 import InfiniteScroll from '../utils/InfiniteScroll'
 
 const Index = ({ location, data }) => {
-  const ALL_CONTENT = [
+  const { state } = useContext(Context)
+  const posts = data.allContentfulPost.edges
+    .map(({ node }) => node)
+    .filter(item => item.node_locale === state.locale)
+  const tags = data.allContentfulTag.edges
+    .map(({ node }) => node)
+    .filter(item => item.node_locale === state.locale)
+  const allContent = [
     {
       id: 'all',
       title: 'All',
-      post: data.allContentfulPost.edges.map(({ node }) => node),
+      post: posts,
     },
-    ...data.allContentfulTag.edges.map(({ node }) => {
+    ...tags.map(tag => {
       return {
-        ...node,
+        ...tag,
         post: orderBy(
-          node.post,
+          tag.post,
           // eslint-disable-next-line
           [object => new moment(object.publishDateISO)],
           ['desc']
@@ -36,7 +44,7 @@ const Index = ({ location, data }) => {
   const [tag, setTag] = useState(
     (location.state && location.state.title) || 'All'
   )
-  const taggedPosts = ALL_CONTENT.filter(({ title }) => title === tag)[0].post
+  const taggedPosts = allContent.filter(({ title }) => title === tag)[0].post
   const [page, setPage, LoadState] = InfiniteScroll(taggedPosts, POST_PER)
 
   useEffect(() => {
@@ -57,7 +65,7 @@ const Index = ({ location, data }) => {
       </Helmet>
       <SEO />
       <Bio />
-      <Nav list={ALL_CONTENT} current={tag} handleItem={handleTag} />
+      <Nav list={allContent} current={tag} handleItem={handleTag} />
       <CardList list={taggedPosts.slice(0, page * POST_PER)} />
     </Layout>
   )
@@ -85,6 +93,7 @@ export const query = graphql`
               excerpt(pruneLength: 80)
             }
           }
+          node_locale
         }
       }
     }
@@ -112,6 +121,7 @@ export const query = graphql`
               }
             }
           }
+          node_locale
         }
       }
     }

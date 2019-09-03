@@ -3,6 +3,7 @@ import styled from 'styled-components'
 require('prismjs/themes/prism.css')
 
 const Body = styled.div`
+  height: 100%;
   h1,
   h2,
   h3 {

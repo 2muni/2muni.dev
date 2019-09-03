@@ -6,13 +6,11 @@ import Badge from '../../atoms/Badge'
 import Container from '../../atoms/Container'
 
 const Wrapper = styled(Container)`
-  margin: 0 auto 1.3125em;
   display: flex;
   align-items: center;
   &::before {
     content: '🏷';
     margin-right: 0.3125em;
-    font-size: 1.3em;
   }
 `
 

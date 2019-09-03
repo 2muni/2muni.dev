@@ -8,7 +8,6 @@ const Wrapper = styled.nav`
   position: sticky;
   top: 0;
   width: 100%;
-  margin: 2.625rem auto;
   background: ${props => props.theme.colors.background};
   z-index: 100;
   transition: background 0.25s ease-out;

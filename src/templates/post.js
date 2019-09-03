@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import styled from 'styled-components'
 import Helmet from 'react-helmet'
 import config from '../utils/siteConfig'
 import Layout from './commons/Layout'
@@ -12,6 +13,21 @@ import PostTags from '../components/molecules/PostTags'
 import PostLinks from '../components/molecules/PostLinks'
 import PostDetails from '../components/molecules/PostDetails'
 import Bio from '../components/organisms/Bio'
+
+const PostBadges = styled.div`
+  margin: 2.625rem 0 1.3125rem;
+`
+const Navigator = styled.div`
+  margin: 1.3125rem 0 1.3125rem;
+  > * {
+    &:nth-child(1) {
+      padding: 1.3125rem 0;
+      margin-bottom: 1.3125rem;
+      border-top: 1px solid ${props => props.theme.colors.secondary};
+      border-bottom: 1px solid ${props => props.theme.colors.secondary};
+    }
+  }
+`
 
 const PostTemplate = ({ data, pageContext }) => {
   const {
@@ -36,9 +52,11 @@ const PostTemplate = ({ data, pageContext }) => {
       <Container centered>
         <PostDetails title={title} date={publishDate} />
         <PageBody body={body} />
-        {tags && <PostTags tags={tags} />}
-        <Bio />
-        <PostLinks previous={previous} next={next} />
+        <PostBadges>{tags && <PostTags tags={tags} />}</PostBadges>
+        <Navigator>
+          <Bio />
+          <PostLinks previous={previous} next={next} />
+        </Navigator>
         <Utterances />
       </Container>
     </Layout>

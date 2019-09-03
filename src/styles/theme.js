@@ -21,9 +21,9 @@ export const darkTheme = {
   colors: {
     base: '#2e3440',
     secondary: '#3e4757',
-    tertiary: '#4f596e',
+    tertiary: '#475062',
     highlight: '#d08770',
-    hlHover: '#b6593c',
+    hlHover: '#c66e52',
     textColor: '#d8d7d7',
     captionColor: '#8b8888',
     background: '#242933',
@@ -34,8 +34,8 @@ export const lightTheme = {
   ...theme,
   colors: {
     base: '#eceff4',
-    secondary: '#e0e5ed',
-    tertiary: '#d3dae6',
+    secondary: '#d3dae6',
+    tertiary: '#e0e5ed',
     highlight: '#338ccd',
     hlHover: '#2b77ae',
     textColor: '#242933',

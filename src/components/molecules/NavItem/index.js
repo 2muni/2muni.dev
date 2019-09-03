@@ -6,7 +6,7 @@ import Badge from '../../atoms/Badge'
 const Wrapper = styled.li`
   display: flex;
   align-items: center;
-  padding: 0.625rem 0.5rem;
+  padding: 0.8rem 0.5rem;
   cursor: pointer;
   border-bottom: 3px solid
     ${props => (props.actived ? props.theme.colors.highlight : 'transparent')};
@@ -27,7 +27,7 @@ const Title = styled(Caption)`
 `
 const Count = styled(Badge)`
   font-size: 0.8em;
-  padding: 0.3em 0.312em 0.4em;
+  padding: 0.3em 0.4em 0.3em 0.3em;
 `
 
 const NavItem = ({ actived, title, count, ...other }) => {

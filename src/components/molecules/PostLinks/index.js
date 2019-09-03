@@ -12,10 +12,19 @@ const Wrapper = styled(Container)`
   margin: 0 auto;
 `
 const PreviousLink = styled(Link)`
-  margin: 0.5em auto 0.5em 0;
+  margin-right: auto;
 `
 const NextLink = styled(Link)`
-  margin: 0.5em 0 0.5em auto;
+  margin-left: auto;
+`
+const Button = styled(Badge)`
+  color: ${props => props.theme.colors.background};
+  padding: 0.6em 1em;
+  background: ${props => props.theme.colors.highlight};
+  transition: background 0.25s ease-out;
+  &:hover {
+    background: ${props => props.theme.colors.hlHover};
+  }
 `
 
 const PostLinks = ({ previous, next }) => {
@@ -23,12 +32,12 @@ const PostLinks = ({ previous, next }) => {
     <Wrapper centered>
       {previous && (
         <PreviousLink to={`/${previous.slug}/`}>
-          <Badge emph>&#8592; {previous.title}</Badge>
+          <Button emph>&#8592; {previous.title}</Button>
         </PreviousLink>
       )}
       {next && (
         <NextLink to={`/${next.slug}/`}>
-          <Badge emph>{next.title} &#8594;</Badge>
+          <Button emph>{next.title} &#8594;</Button>
         </NextLink>
       )}
     </Wrapper>

@@ -15,6 +15,7 @@ const Date = styled(Caption)`
   color: ${props => props.theme.colors.captionColor};
   &::before {
     content: '📅 ';
+    margin-right: 0.3125em;
   }
 `
 

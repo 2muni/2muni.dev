@@ -1,9 +1,11 @@
 import React, { useReducer, useEffect } from 'react'
+import config from './siteConfig'
 
 const Context = React.createContext()
 
 const initialState = {
   theme: 'light',
+  locale: `${config.defaultLocale}`,
 }
 
 const reducer = (state, nextState) => {

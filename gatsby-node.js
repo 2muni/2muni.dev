@@ -1,13 +1,14 @@
+const config = require('./src/utils/siteConfig')
 const path = require(`path`)
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
-
   const loadPosts = new Promise((resolve, reject) => {
     graphql(`
       {
         allContentfulPost(
-          sort: { fields: [publishDate], order: DESC }
+          filter: {node_locale: {eq: "${config.defaultLocale}"}},
+          sort: {fields: [publishDate], order: DESC },
           limit: 10000
         ) {
           edges {
@@ -15,6 +16,7 @@ exports.createPages = ({ graphql, actions }) => {
               slug
               title
               publishDate
+              node_locale
             }
           }
         }
@@ -49,10 +51,13 @@ exports.createPages = ({ graphql, actions }) => {
   const loadPages = new Promise((resolve, reject) => {
     graphql(`
       {
-        allContentfulPage {
+        allContentfulPage(
+          filter: {node_locale: {eq: "${config.defaultLocale}"}}
+        ) {
           edges {
             node {
               slug
+              node_locale
             }
           }
         }

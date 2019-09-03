@@ -8,6 +8,7 @@ const List = styled.ul`
   flex-flow: row wrap;
   justify-content: space-between;
   font-size: 0.9em;
+  margin-top: 2.625rem;
   &::after {
     content: '';
     flex: 0 0 32%;

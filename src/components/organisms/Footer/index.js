@@ -11,8 +11,6 @@ const Wrapper = styled.footer`
 `
 const Content = styled(Container)`
   padding: 1.3125rem 0;
-  box-shadow: inset 0 1px 0 ${props => props.theme.colors.secondary};
-  transition: box-shadow 0.25s ease-out;
 `
 const Text = styled(Caption)`
   display: inline;
