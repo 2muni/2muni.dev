@@ -14,9 +14,16 @@ const Post = styled.li`
   @media screen and (min-width: ${props => props.theme.responsive.medium}) {
     flex: ${props => (props.featured ? '0 0 100%' : '0 0 32%')};
   }
+  img {
+    transform: scale(1, 1);
+    transition: transform 0.5s ease-out !important;
+  }
   &:hover {
     background: ${props => props.theme.colors.secondary};
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    img {
+      transform: scale(1.1, 1.1);
+    }
   }
   a {
     display: flex;
@@ -44,13 +51,13 @@ const Excerpt = styled(Caption)`
   color: ${props => props.theme.colors.captionColor};
 `
 
-const Card = ({ slug, heroImage, title, publishDate, body, ...props }) => {
+const Card = ({ slug, heroImage, title, publishDateISO, body, ...props }) => {
   return (
     <Post featured={props.featured}>
       <Link to={`/${slug}/`}>
         <BgImg fluid={heroImage.fluid} />
         <Title>{title}</Title>
-        <Date>{publishDate}</Date>
+        <Date>{publishDateISO}</Date>
         <Excerpt
           emph
           dangerouslySetInnerHTML={{

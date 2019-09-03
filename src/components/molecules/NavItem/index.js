@@ -6,7 +6,7 @@ import Badge from '../../atoms/Badge'
 const Wrapper = styled.li`
   display: flex;
   align-items: center;
-  padding: 0.8rem 0.5rem;
+  padding: 0.5rem;
   cursor: pointer;
   border-bottom: 3px solid
     ${props => (props.actived ? props.theme.colors.highlight : 'transparent')};

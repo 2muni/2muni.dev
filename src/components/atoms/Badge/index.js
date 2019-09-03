@@ -4,7 +4,7 @@ const Badge = styled.span`
   display: inline-block;
   border-radius: 0.5em;
   font-size: ${props => (props.emph ? '0.9em' : '0.8em')};
-  padding: 0.5em;
+  padding: 0.4em 0.5em;
   color: ${props => (props.emph ? props.theme.colors.textColor : 'inherit')};
   background: ${props =>
     props.emph ? props.theme.colors.tertiary : props.theme.colors.secondary};

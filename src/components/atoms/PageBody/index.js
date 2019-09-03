@@ -31,9 +31,9 @@ const Body = styled.div`
   a {
     transition: 0.2s;
     font-weight: 600;
-    color: ${props => props.theme.colors.textColor};
+    color: ${props => props.theme.colors.highlight};
     &:hover {
-      color: ${props => props.theme.colors.highlight};
+      color: ${props => props.theme.colors.hlHover};
     }
   }
 
@@ -81,15 +81,15 @@ const Body = styled.div`
   }
 
   blockquote {
-    font-style: italic;
-    border-left: 4px solid ${props => props.theme.colors.secondary};
+    border-left: 4px solid ${props => props.theme.colors.highlight};
     padding: 0 0 0 0.5em;
+    color: ${props => props.theme.colors.captionColor};
   }
 
   pre {
     margin: 0 0 2em 0;
     border-radius: 2px;
-    background: ${props => props.theme.colors.secondary} !important;
+    background: ${props => props.theme.colors.base} !important;
     span {
       background: inherit !important;
     }
@@ -97,6 +97,14 @@ const Body = styled.div`
       color: ${props => props.theme.colors.textColor};
       text-shadow: none;
     }
+  }
+
+  /* Inline code */
+  *:not(pre) > code {
+    padding: 0.2em 0.4em !important;
+    background: ${props => props.theme.colors.base} !important;
+    color: ${props => props.theme.colors.textColor};
+    text-shadow: none;
   }
 `
 

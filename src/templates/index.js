@@ -39,7 +39,7 @@ const Index = ({ location, data }) => {
     }),
   ]
   // const DEST_POS = 394
-  const POST_PER = 7
+  const POST_PER = 6
 
   const [tag, setTag] = useState(
     (location.state && location.state.title) || 'All'
@@ -66,7 +66,7 @@ const Index = ({ location, data }) => {
       <SEO />
       <Bio />
       <Nav list={allContent} current={tag} handleItem={handleTag} />
-      <CardList list={taggedPosts.slice(0, page * POST_PER)} />
+      <CardList list={taggedPosts.slice(0, page * POST_PER + 1)} />
     </Layout>
   )
 }
@@ -80,6 +80,7 @@ export const query = graphql`
           id
           slug
           publishDate(formatString: "MMMM DD, YYYY")
+          publishDateISO: publishDate(formatString: "YYYY-MM-DD")
           heroImage {
             title
             fluid(maxWidth: 1800) {

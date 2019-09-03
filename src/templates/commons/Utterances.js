@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext, useRef } from 'react'
 import { Context } from '../../utils/Context'
 
 const repo = require('../../../package.json')
@@ -9,7 +9,7 @@ const repo = require('../../../package.json')
 const src = 'https://utteranc.es/client.js'
 
 const Utterances = () => {
-  const rootElm = React.createRef()
+  const rootElm = useRef()
   const {
     state: { theme },
   } = useContext(Context)
@@ -18,7 +18,7 @@ const Utterances = () => {
     const config = {
       src,
       repo,
-      theme: theme === 'dark' ? 'photon-dark' : 'github-light',
+      theme: theme === 'dark' ? 'github-dark' : 'github-light',
       'issue-term': 'pathname',
       crossorigin: 'anonymous',
       async: true,

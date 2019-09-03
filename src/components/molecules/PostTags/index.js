@@ -12,6 +12,18 @@ const Wrapper = styled(Container)`
     content: '🏷';
     margin-right: 0.3125em;
   }
+  li {
+    &:not(:first-child) {
+      margin-left: 0.3em;
+    }
+  }
+`
+const Tag = styled(Badge)`
+  background: ${props => props.theme.colors.base};
+  color: ${props => props.theme.colors.captionColor};
+  &:hover {
+    color: ${props => props.theme.colors.textColor};
+  }
 `
 
 const TagList = props => {
@@ -21,7 +33,7 @@ const TagList = props => {
         {props.tags.map(({ id, title }) => (
           <li key={id}>
             <Link to={`/`} state={{ title }}>
-              <Badge emph>{title}</Badge>
+              <Tag emph>{title}</Tag>
             </Link>
           </li>
         ))}

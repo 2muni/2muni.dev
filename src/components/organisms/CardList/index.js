@@ -19,6 +19,7 @@ const Item = styled(Card)`
 `
 
 const CardList = ({ list }) => {
+  console.log(list)
   return (
     <Container>
       <List>

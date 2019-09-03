@@ -82,7 +82,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 100%;
     font-variant-ligatures: none;
     text-rendering: optimizeLegibility;
-    text-shadow: rgba(0, 0, 0, .3) 0 0 1px;
+    text-shadow: rgba(0, 0, 0, .1) 0 0 1px;
     font-weight: 400;
     font-family: 'Noto Sans', 'Noto Sans KR', 'Noto Sans JP', sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   }

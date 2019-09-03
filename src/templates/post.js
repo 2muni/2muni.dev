@@ -15,14 +15,14 @@ import PostDetails from '../components/molecules/PostDetails'
 import Bio from '../components/organisms/Bio'
 
 const PostBadges = styled.div`
-  margin: 2.625rem 0 1.3125rem;
+  margin: 5.612em 0 1.3125em;
 `
 const Navigator = styled.div`
-  margin: 1.3125rem 0 1.3125rem;
+  margin: 1.3125em 0 1.3125em;
   > * {
     &:nth-child(1) {
-      padding: 1.3125rem 0;
-      margin-bottom: 1.3125rem;
+      padding: 1.3125em 0;
+      margin-bottom: 1.3125em;
       border-top: 1px solid ${props => props.theme.colors.secondary};
       border-bottom: 1px solid ${props => props.theme.colors.secondary};
     }
@@ -35,7 +35,7 @@ const PostTemplate = ({ data, pageContext }) => {
     slug,
     heroImage,
     body,
-    publishDate,
+    publishDateISO,
     tags,
   } = data.contentfulPost
   const postNode = data.contentfulPost
@@ -50,7 +50,7 @@ const PostTemplate = ({ data, pageContext }) => {
       <SEO pagePath={slug} postNode={postNode} postSEO />
       <Hero fluid={heroImage.fluid} backgroundColor={'#eeeeee'} />
       <Container centered>
-        <PostDetails title={title} date={publishDate} />
+        <PostDetails title={title} date={publishDateISO} />
         <PageBody body={body} />
         <PostBadges>{tags && <PostTags tags={tags} />}</PostBadges>
         <Navigator>
