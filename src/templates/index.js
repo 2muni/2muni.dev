@@ -12,14 +12,23 @@ import { Context } from '../utils/Context'
 import config from '../utils/siteConfig'
 import InfiniteScroll from '../utils/InfiniteScroll'
 
-const Index = ({ location, data }) => {
+function getLocalizedItems(list, locale) {
+  return list.edges
+    .map(({ node }) => node)
+    .filter(item => item.node_locale === locale)
+}
+function getOuterHeight(dom) {
+  const margin =
+    parseInt(getComputedStyle(dom).marginTop) +
+    parseInt(getComputedStyle(dom).marginBottom)
+
+  return dom.offsetHeight + margin
+}
+
+const Index = ({ location, data: { allContentfulPost, allContentfulTag } }) => {
   const { state } = useContext(Context)
-  const posts = data.allContentfulPost.edges
-    .map(({ node }) => node)
-    .filter(item => item.node_locale === state.locale)
-  const tags = data.allContentfulTag.edges
-    .map(({ node }) => node)
-    .filter(item => item.node_locale === state.locale)
+  const posts = getLocalizedItems(allContentfulPost, state.locale)
+  const tags = getLocalizedItems(allContentfulTag, state.locale)
   const allContent = [
     {
       id: 'all',
@@ -38,7 +47,6 @@ const Index = ({ location, data }) => {
       }
     }),
   ]
-  // const DEST_POS = 394
   const POST_PER = 6
 
   const [tag, setTag] = useState(
@@ -47,16 +55,30 @@ const Index = ({ location, data }) => {
   const taggedPosts = allContent.filter(({ title }) => title === tag)[0].post
   const [page, setPage, LoadState] = InfiniteScroll(taggedPosts, POST_PER)
 
+  const handleScroll = () => {
+    let destPos = 0
+    const scrollTop = Math.max(
+      document.documentElement.scrollTop,
+      document.body.scrollTop
+    )
+    const skips = document.querySelectorAll('.header')
+    skips.forEach(dom => {
+      destPos += getOuterHeight(dom)
+    })
+    if (destPos < scrollTop) {
+      window.scrollTo(0, destPos)
+    }
+  }
+
   useEffect(() => {
     if (LoadState && taggedPosts.length / POST_PER > page) {
       setPage(page + 1)
     }
   }, [LoadState])
-
-  const handleTag = tag => {
-    setTag(tag)
+  useEffect(() => {
     setPage(1)
-  }
+    handleScroll()
+  }, [tag])
 
   return (
     <Layout>
@@ -64,8 +86,8 @@ const Index = ({ location, data }) => {
         <title>{`${config.siteTitle}`}</title>
       </Helmet>
       <SEO />
-      <Bio />
-      <Nav list={allContent} current={tag} handleItem={handleTag} />
+      <Bio className={'header'} />
+      <Nav list={allContent} current={tag} handleItem={setTag} />
       <CardList list={taggedPosts.slice(0, page * POST_PER + 1)} />
     </Layout>
   )

@@ -14,18 +14,14 @@ const List = styled.ul`
     flex: 0 0 32%;
   }
 `
-const Item = styled(Card)`
-  margin: 0 0 1em 0;
-`
 
 const CardList = ({ list }) => {
-  console.log(list)
   return (
     <Container>
       <List>
-        <Item {...list[0]} featured />
+        <Card {...list[0]} featured />
         {list.slice(1).map(item => (
-          <Item key={item.id} {...item} />
+          <Card key={item.id} {...item} />
         ))}
       </List>
     </Container>

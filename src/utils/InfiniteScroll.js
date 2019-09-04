@@ -15,7 +15,7 @@ export default (list, coef) => {
     )
     const clientHeight = document.documentElement.clientHeight
     const BASE_TOP = document.documentElement.clientHeight / 2
-    console.log(scrollHeight, scrollTop, clientHeight)
+
     if (scrollHeight - (scrollTop + clientHeight) < BASE_TOP) {
       setLoadState(true)
     } else setLoadState(false)

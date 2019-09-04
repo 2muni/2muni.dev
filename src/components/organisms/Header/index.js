@@ -18,9 +18,9 @@ const Home = styled(Link)`
   font-size: 1.5rem;
 `
 
-const Header = ({ theme, toggleTheme }) => {
+const Header = ({ theme, toggleTheme, className }) => {
   return (
-    <Wrapper>
+    <Wrapper className={className}>
       <Content>
         <Home to="/">{config.siteTitle}</Home>
         <Switch

@@ -21,9 +21,9 @@ const Description = styled(Caption)`
   color: ${props => props.theme.colors.captionColor};
 `
 
-const Bio = () => {
+const Bio = ({ className }) => {
   return (
-    <Wrapper>
+    <Wrapper className={className}>
       <Avatar src={avatar} />
       <Text>
         <Caption>

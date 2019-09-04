@@ -52,7 +52,11 @@ const Template = ({ children }) => {
       </Helmet>
       <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
         <Container>
-          <Header theme={theme} toggleTheme={toggleTheme} />
+          <Header
+            className={'header'}
+            theme={theme}
+            toggleTheme={toggleTheme}
+          />
           <Content>{children}</Content>
           <Footer />
         </Container>
