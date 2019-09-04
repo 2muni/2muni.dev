@@ -32,7 +32,6 @@ const GlobalStyle = createGlobalStyle`
   /* Added to Fix Footer to bottom of viewport */
   html, body {
     height: 100%;
-    scroll-behavior: smooth;
   }
   footer {
     width: 100%;

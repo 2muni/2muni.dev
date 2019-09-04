@@ -66,7 +66,11 @@ const Index = ({ location, data: { allContentfulPost, allContentfulTag } }) => {
       destPos += getOuterHeight(dom)
     })
     if (destPos < scrollTop) {
-      window.scrollTo(0, destPos)
+      window.scrollTo({
+        top: destPos,
+        left: 0,
+        behavior: 'smooth',
+      })
     }
   }
 

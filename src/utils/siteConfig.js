@@ -2,14 +2,13 @@ module.exports = {
   defaultLocale: 'ko-KR',
   siteTitle: "2muni's log",
   siteTitleAlt: "2muni's log", // This allows an alternative site title for SEO schema.
-  siteDescription:
-    'Written by @2muni. 미니멀한 설계와 의미있는 프로젝트를 하고자 합니다.',
+  siteDescription: '여러가지 하고 있는 개발자입니다.',
   siteUrl: 'https://2muni.netlify.com', // Site domain. Do not include a trailing slash! If you wish to use a path prefix you can read more about that here: https://www.gatsbyjs.org/docs/path-prefix/
   publisher: '2muni', // Organization name used for SEO schema
   postsPerHomePage: 7, // Number of posts shown on the 1st page of of the index.js template (home page)
   postsPerPage: 6, // Number of posts shown on paginated pages
   author: '2muni', // Author for RSS author segment and SEO schema
-  authorDescription: 'P미니멀한 설계와 의미있는 프로젝트를 하고자 합니다.',
+  authorDescription: '여러가지 하고 있는 개발자입니다.',
   authorUrl: 'https://2muni.netlify.com', // URL used for author and publisher schema, can be a social profile or other personal site
   userTwitter: '@twitter', // Change for Twitter Cards
   shortTitle: '2muni', // Used for App manifest e.g. Mobile Home Screen
