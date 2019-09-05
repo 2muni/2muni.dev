@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
+import throttle from 'lodash/throttle'
 
 export default (list, coef) => {
   const [page, setPage] = useState(1)
   const [LoadState, setLoadState] = useState(false)
 
   const onScroll = () => {
+    console.log('fire')
     const scrollHeight = Math.max(
       document.documentElement.scrollHeight,
       document.body.scrollHeight
@@ -14,7 +16,7 @@ export default (list, coef) => {
       document.body.scrollTop
     )
     const clientHeight = document.documentElement.clientHeight
-    const BASE_TOP = document.documentElement.clientHeight / 2
+    const BASE_TOP = document.documentElement.clientHeight / 1.5
 
     if (scrollHeight - (scrollTop + clientHeight) < BASE_TOP) {
       setLoadState(true)
@@ -22,9 +24,13 @@ export default (list, coef) => {
   }
 
   useEffect(() => {
-    window.addEventListener('scroll', onScroll, { passive: false })
+    window.addEventListener('scroll', throttle(onScroll, 300), {
+      passive: true,
+    })
     return () => {
-      window.removeEventListener('scroll', onScroll, { passive: false })
+      window.removeEventListener('scroll', throttle(onScroll, 300), {
+        passive: true,
+      })
     }
   }, [])
   useEffect(() => {
