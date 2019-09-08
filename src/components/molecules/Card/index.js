@@ -7,6 +7,7 @@ import Link from '../../atoms/Link'
 
 const Post = styled.li`
   position: relative;
+  width: 100%;
   margin: 0 0 1em 0;
   @media screen and (min-width: ${props => props.theme.responsive.small}) {
     flex: ${props => (props.featured ? '0 0 100%' : '0 0 49%')};
@@ -18,6 +19,8 @@ const Post = styled.li`
   a {
     display: flex;
     flex-direction: column;
+    height: 100%;
+    width: 100%;
     color: ${props => props.theme.colors.textColor};
     transition: color 0.25s ease-out, box-shadow 0.25s ease-out,
       background 0.25s ease-out;
