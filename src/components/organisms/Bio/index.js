@@ -28,7 +28,7 @@ const Bio = ({ className }) => {
       <Text>
         <Caption>
           {'Written by '}
-          <Link external href="#">{`@${config.author}`}</Link>
+          <Link external href="https://github.com/2muni">{`@${config.author}`}</Link>
         </Caption>
         <Description>{config.authorDescription}</Description>
         <Caption>

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-require('prismjs/themes/prism.css')
+require('prismjs/themes/prism-tomorrow.css')
 
 const Body = styled.div`
   height: 100%;
@@ -14,10 +14,15 @@ const Body = styled.div`
   }
 
   h1 {
-    font-size: 1.5em;
+    font-size: 1.7em;
+    &::before{
+      content: '';
+      border-left: 4px solid ${props => props.theme.colors.highlight};
+      padding: 0 0 0 0.5rem;
+    }
   }
   h2 {
-    font-size: 1.25em;
+    font-size: 1.3em;
   }
   h3 {
     font-size: 1em;
@@ -82,29 +87,19 @@ const Body = styled.div`
 
   blockquote {
     border-left: 4px solid ${props => props.theme.colors.highlight};
-    padding: 0 0 0 0.5em;
+    padding: 0 0 0 0.5rem;
     color: ${props => props.theme.colors.captionColor};
   }
 
   pre {
-    margin: 0 0 2em 0;
-    border-radius: 2px;
-    background: ${props => props.theme.colors.base} !important;
-    span {
-      background: inherit !important;
-    }
-    code {
-      color: ${props => props.theme.colors.textColor};
-      text-shadow: none;
-    }
+    border-radius: 0.3em;
   }
 
   /* Inline code */
   *:not(pre) > code {
-    padding: 0.2em 0.4em !important;
-    background: ${props => props.theme.colors.base} !important;
+    padding: 0.2em 0.4em 0.4em !important;
+    background: ${props => props.theme.colors.secondary} !important;
     color: ${props => props.theme.colors.textColor};
-    text-shadow: none;
   }
 `
 

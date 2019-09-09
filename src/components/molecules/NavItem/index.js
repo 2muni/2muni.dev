@@ -27,7 +27,7 @@ const Title = styled(Caption)`
 `
 const Count = styled(Badge)`
   font-size: 0.8em;
-  padding: 0.3em 0.4em 0.3em 0.3em;
+  padding: 0.3em 0.4em 0.4em 0.3em;
 `
 
 const NavItem = ({ actived, title, count, ...other }) => {
