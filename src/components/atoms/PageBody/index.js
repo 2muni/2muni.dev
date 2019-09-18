@@ -8,14 +8,14 @@ const Body = styled.div`
   h2,
   h3 {
     font-weight: 600;
-    line-height: 1.25;
+    line-height: 1.6;
     margin: 0 0 1rem 0;
     text-transform: capitalize;
   }
 
   h1 {
     font-size: 1.7em;
-    &::before{
+    &::before {
       content: '';
       border-left: 4px solid ${props => props.theme.colors.highlight};
       padding: 0 0 0 0.5rem;
@@ -30,7 +30,7 @@ const Body = styled.div`
 
   p {
     line-height: 1.6;
-    margin: 0 0 2em 0;
+    margin: 0 0 1.6em 0;
   }
 
   a {
@@ -60,7 +60,7 @@ const Body = styled.div`
     li {
       list-style: disc;
       list-style-position: inside;
-      line-height: 1.25;
+      line-height: 1.6;
       &:last-child {
         margin: 0;
       }
@@ -71,7 +71,7 @@ const Body = styled.div`
     li {
       list-style: decimal;
       list-style-position: inside;
-      line-height: 1.25;
+      line-height: 1.6;
       &:last-child {
         margin: 0;
       }
@@ -85,9 +85,13 @@ const Body = styled.div`
   }
 
   blockquote {
-    border-left: 4px solid ${props => props.theme.colors.highlight};
-    padding: 0 0 0 0.5rem;
+    padding: 1em;
     color: ${props => props.theme.colors.captionColor};
+    background: ${props => props.theme.colors.base};
+    margin: 0 0 2em 0;
+    p {
+      margin: 0;
+    }
   }
 
   pre {
