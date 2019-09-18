@@ -35,7 +35,6 @@ const Body = styled.div`
 
   a {
     transition: 0.2s;
-    font-weight: 600;
     color: ${props => props.theme.colors.highlight};
     &:hover {
       color: ${props => props.theme.colors.hlHover};
